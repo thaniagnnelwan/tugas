@@ -1,0 +1,341 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# TURUNAN"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Bagian ini berfungsi untuk menjalankan sekumpulan notasi/simbol untuk mengakses kode python dalam melakukan perintah perhitungan"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import sympy as sym\n",
+    "import math\n",
+    "from sympy import *\n",
+    "x,y,z = symbols ('x y z')\n",
+    "init_printing(use_unicode=True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Soal-soal yang dikerjakan dalam task 2 ini merupakan soal-soal turunan, sehingga kita menggunakan ' Derivative ' untuk mengakses simbol-simbol pada bentuk soal turunan."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "pada soal turunan ini kita menggunakan variabel untuk menampung soal supaya memudahkan untuk mencetak jawaban dengan menggunakan perintah doit()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "soal no.4 :\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle \\frac{d}{d y} \\left(12 + \\frac{8}{y^{2}} - \\frac{9}{y^{3}} + \\frac{1}{y^{4}}\\right)$"
+      ],
+      "text/plain": [
+       "d ⎛     8    9    1 ⎞\n",
+       "──⎜12 + ── - ── + ──⎟\n",
+       "dy⎜      2    3    4⎟\n",
+       "  ⎝     y    y    y ⎠"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print('soal no.4 :')\n",
+    "a = Derivative(y**-4-9*y**-3+8*y**-2+12)\n",
+    "a"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "jawaban no. 4\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAH0AAAAkCAYAAACkATUaAAAABHNCSVQICAgIfAhkiAAABBNJREFUeJzt20mIHFUYwPGfM5oIGY1GXOJBRSSKC4xIQOYQ24AhEkVxPajYOeQgikrw4AIiHowiYnDJQVwyIG7xIAaF4DYHowkxmMQVdXAEyaCCYlSMMWY8fD2mrUx3V29V1aT/8KDn9eupf7/91VdNnz5tsAjrsRNTuKpGufkYxU/4E5/ggiwEZ+AubMGuis96nJ0oMyG+TzI9mZllOu4WXk80KjjQwYvOwXbcUqfMUdiIQ7AMZ+J2/NhBj2YoYQ1GsBh78TbmVZVZKDrqdLqokr8uM8vGnI8V2JGnRK2R/oBo9KIyhH9waZ0yq/GN6LhFYC7GRacdk/FIT8Pl2IQXxOjeJmaGolTgEaJOfq7x/ixcj2dFxy4CT+FVvJu3SK2RvruSVuFcLMfvuDk7tbq8jI8xWOP9a8QScGJmRvVZga2iM5JypHeLWo2+Bx8m8lbh864bNeZhTOK0OmU2iM1eEThdbD7PqMobU8BG/w5PJ/JuwB9tXKtcuV6pjf/xCH4QG8tanCzW+8vauE4nKYvvvbcqTWFf5fXsWh88NAO5ajaKHlrNAtEZ8uIxXIsL1Z9xlot9yBtZSKXgNXyUyHsOX4sN854sJIYwXElTuKPy+qSqMgvxN+4R0+jV+FV7a3pZ6yN9jTijL8YJVWkoUW5AdMwHW5XMiDEZT+8lM9/EWJsot0yc53fjK9yqvd17WeuNPpPvFO5LlFtSyV/QomNWjMlxTc+SsvbX9IOaCbV7/0zp+YL7rc3YbyYmFKxOkxu5cTHtpmVnB13SsFrcyq1mWOyoR0UFV7MtA6dGFL1OW6aZnpwmNUNZa9N7ns6t0hHXTh3ZinIbtRkOWuesz+nwgYjIDeIV3J+DQysMYLM4utUKGxeFCXEU3YdfxD2I/8ij0ZdWhAbxPl5XjLW3ETeJ9TmPOmuFERHXOICso2xEgxNBgln1ChaI43CFiGj1aZHN+A0P5S2SklExckoijFl0vhXRty24LmeX/3GkiFolH08qGovsP++X9EajT4d+5+MznFP9Zqen9++xMpE3jL8cGMHaJQL/Szvs0CyNnEfEI1ITeAkX45kM/ZKkqePps/4k3sR53RRahxcTee/Zfz94Lo6tvD4c7+CSbgqloJFzNSX5j/RGvnPEE0BE4GirCHR1jZXi+bFprhSPHh1T+fuUisQOfIp7uymTkkbO1ZTk3+iNfE8Vp6Htoo5v67bQiLjrM08E8cfF065FptecC+c7W6wtS3AnvsRheQqloNecC+m7CY+LjVre63Vaes25cL6Pitt/G/IWaYJecy6c743iwbyz8hZpgl5zLpzvW4r3O69G9JpzIXwHcLz4Ed0kjs5XJxW95lw435JYY74QR4peoKS3nEt6y7dPnz59+vTp02X+Bd0ZYFCtGj1HAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle - \\frac{16}{y^{3}} + \\frac{27}{y^{4}} - \\frac{4}{y^{5}}$"
+      ],
+      "text/plain": [
+       "  16   27   4 \n",
+       "- ── + ── - ──\n",
+       "   3    4    5\n",
+       "  y    y    y "
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print('jawaban no. 4')\n",
+    "a.doit()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "soal no. 9\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAHgAAAAhCAYAAAAS5W/tAAAABHNCSVQICAgIfAhkiAAABP5JREFUaIHtmn1oVWUcxz+7lbi0NDMsKZSaU2M4zBd6L1bYG0ZFERZhJfRH2QthlBY4gtiiRlm2UkPGCMWYFAkZMyMoRS1bsmr0MrNCt7VITdRevf3xfa733uNzzn3O7jneOzwfOGx7fs/L9znPy/k9v2eQkOBhPtBVahEJbqQGUKYW+DJqIWXAQuAz4A+gH1gH1JRUUQQkA5zlaqAZuBSoA/4FPgRGlVBT7EwEPgL+BDqBmcAh4LpSijpODAf+A2aXWkhcVAP7gSVAFXAT8BOQBsbE2G4r8CswLMY2XDgH9fWyEutwYRrSOi9MoQ3Aak/aSqAnIlE2pgNHgMcttueBjcAvwGHgd6ADWAycGYOWNab+k2KouxAVwP3AFuAA2jU7gEcC9LyDxma4SwPnoRkxw5O+HFgfXq8z7cA+oNJi+xt1eCXQCLyKnKI0sBtpjooX0MuqirDOMLSifvUBb6Jd9GuT1oYmgJeZxr7IpYGbkZMxxJO+HWgYkOTCVKPVu9zHPtQn/TnUseaIdDShF3thRPWF5RbUn53A6Jz0U9AqTQP3+pTtQp/RgrvObFPRaTlpV5m0Ox2Ftpv8t3nSK4AWY2vMSW80adc41p+h1pTbEIGGVyjt4EJ29T5ksdUY23afsouNvaATPBZ5zsuAC8h3sCY6Cq1FXug35M+oJlOPd6V+jnaNsM7VM6a+piI1NKMzcB1wds7j9E2LkMykvMFiO9XY0sBIi/1aY3vRpaG7gZ+BvcDHwLPAQcKdnVvI31IWmb/XeOoZhga306HOBUA98BLwialvB3BWkRrSPk+9g6YoWWXafdBiy6zgNHCxxT7C2LbFps7Ducjj3YVCnGngA479tlcbW7tDnb3kD8B6go9trhrKhbuQxh/ID7KcDKwl22/bCgf1tTdOgV4ayIrahLYZL5eQXVWujAFuBb4F9gAXFamhGHbhvwPYnrcC6koB75t8vegz8jLwFRq874xtlk/53Wg3BDQr4qY/5/d56Ezn5bD56ecp2+hDXuUXqNOt+MeOXTQUQzfyWVzZE2A7gk4xjwL3mOcfYDMwF1gKTEDBIBuVZN/nUcLMvkJPLnOM4B5je91H1Fhj/9S/34F0mPKjLTZXDYOBzOAdQscmLynU1+7jIeZGFJzoRA5QF5qJkyx5K9CM7LfYXOhDg3dGERoGAw+gfrb42Ccb+9owlQ7k/vdyNMt2opguwO2m8Xd9yrQZuy16NAkdWbykyAY6NkWgoVw43ZI2A4VnDwDn+5S7D/VvfpjGVnBsTDqIWhRu7EFn6FwyocUrLOXm4H/AfwytvI3I6WhAIctuU6aH/ODEQDWUC1vR0XQp6ut7yHE6SHAQY7XJFypsuw140jFvFfL89gJTLPbMQXyLxTbElN1qsdUAr6F76N9QJ/ajwaon/zhRjIZy4QkUrdoH/AX8CLwBjA8oMwJ9nwN3p6D73ztMY+Ny8i8Bvsc/yBCWhejlT42ovhOJhymwMxW6/61A4cQVJv8C5Nx4t8BiGGraXBdhnScClejo1RaUyeX+dxb6Fj6F4rbTo9N4lCtR0LzUF/6DicnoUzXeL0OY+9/N6Bt4fWTyEmIjE2yfim5ddnjs08j/B7s65KGm8I+kJJQhLve/maPHXOSpxfmfHQkRU+j+dxwKYj9t8k9BIbFyPksmePC7/x2FIlnLPPnfZuCx44SEhISEhISEhITBy/8Z95NBZsyc7AAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle \\frac{d}{d x} x \\left(3 x^{2} - 9\\right)$"
+      ],
+      "text/plain": [
+       "d ⎛  ⎛   2    ⎞⎞\n",
+       "──⎝x⋅⎝3⋅x  - 9⎠⎠\n",
+       "dx              "
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print('soal no. 9')\n",
+    "b=Derivative(x*(3*x**2-9))\n",
+    "b"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "jawaban no. 9\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAEkAAAAWCAYAAACMq7H+AAAABHNCSVQICAgIfAhkiAAAAlNJREFUWIXt10+IjVEYx/HPMBQNSRRlIY0Sw2woi8lCUhRJNpT8KwvEyoKVHaUpJCSLSVJTRCkZO4lGkywMSoxZmWEKmRr/4lqcM7xz571zZ+6f7l3cb5267/M85znP73nP+77nUqPqOIYufMUA7qCpohVVIR3YIzRmOW6hH7MrWVS104Df2FTpQsZiUtZ1HfaiE4MYwjMcxuQyrD8j1vCpDLnzUbDWq8jgA67gLF5E242YuJS0x8LKcQPyUZDWLTGgB3MS9inCuyOD3SUs8jT60FjCnOOlYK3DnT2Y4muKvqdZ9vvRvjXLXoe26DuVkq9VuINLc6koM4VoxX/BG1J806Mvg1kJe7Pw4n1p5CPTGmMvp+Q6p7INojCt4Hp0HEiZONzdDFZn+dqM3J7H43W70R+GC8IZaS3mJUbDWIrKQKFa7YiON0aeW+pxMzExu/sL8A29OBRj7mFqSgGZHONEfl0lpVCtJuFudPYLj8oZdAtNeB1961MWPZlI/EjYsqWkV+4Gp41refJNSGt9YuIfbMYR7IzjFx5jF85jMT6mLDqQ+L1POHOUkrf4PoH493n8xWjNyTShw0PCZzLJ9rhon9D9ixNJXIWMpXVM9gsNaMuyb8RPPMdcvBLuyJIiC60kubT+Y2aKbZXwt2EQixL2FqHbPZgfbdviAreLr7XsjFtr9tH7ibDVumPgMmG3/BAOjB0xrhkPYmyL8M4YpgsrsQYPi9NRVsardRRHhZPmlxj8DpewMBHTKHwRPmNFSo51wm7qLE5D2RmP1ho1atSoOv4CV//Samr6L9wAAAAASUVORK5CYII=\n",
+      "text/latex": [
+       "$\\displaystyle 9 x^{2} - 9$"
+      ],
+      "text/plain": [
+       "   2    \n",
+       "9⋅x  - 9"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print('jawaban no. 9')\n",
+    "b.doit()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 11,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "soal no.14\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle \\frac{d}{d z} \\left(2 z^{4} - z^{3} - 3 z^{2}\\right)$"
+      ],
+      "text/plain": [
+       "d ⎛   4    3      2⎞\n",
+       "──⎝2⋅z  - z  - 3⋅z ⎠\n",
+       "dz                  "
+      ]
+     },
+     "execution_count": 11,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print ('soal no.14')\n",
+    "c=Derivative(2*z**4-z**3-3*z**2)\n",
+    "c"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "jawaban no.14\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAI4AAAAWCAYAAAAWyKQmAAAABHNCSVQICAgIfAhkiAAABCxJREFUaIHt2nuIVVUUx/GPY4aZUZllEGWFRQ8tiOgFvV+YRS96EkF/RUQ0UURCkEQ2PnpQln+EZEH/lKVJhjUlPcQS/cOSkEKyoteo+cgKy0Zvf6x9mevxXu9jznTnyv3CYbh7nbPX+p2zz95rrzO0aTPIuRersS0dn2NSUyMaGCZjpdC4Ee9gfFMjanGuxVU4ASdiKv7Fac0MagB4H3eJwTIBC9CDUc0Mal9jM+5udhADzEjsxDXNDiRPOsq0TUI3fsJ2rMM8nJuj36G4TdzUz3Lst1amYwl+FBo3YxUew2E5+zpI3OfNOfdbD+fjLfyKf9LfbrEC5MJ0FPAb5mAa3sQO7MId/ex/Av5EL7bIMfA62YHleFlonCXykgJ+xtE5+npdDMqhOfZZD48KXRsxF0/iJaF3Rh4OjhRTag+OyNguTs7X9dPH/hiHM9ElBmgzEsfhFdqnCp2zc/IzU7zd43Lqr15uEno+EDNflmF5ODk7OVlYwb4Nf2TalqVrKh2fVPH5oZjZBgun67vRpTSi82msxykDFWwVOsSL/hcOr/GamnXuV3LRWjGFn4XRYjYocoEYsW9nHC2w500mdhXH4KMqgXao/PY3g2ICuzrTXq/O53GLmKnX5BlgHZyH40SqsUXkruPxN1aIckiWhp9np8hlNoh1sAtvJGfd9lzCyjFTjM65dk++p4kk7ViR63QlXxNr6HOgeAhT8CyWiri/VNsbWknnbDE7XyKW/+IxMq+ga+SBFN8L4kUoN3v0R+ceXCd2AKVO1uL2Kg6GiJtWDHZIxv4KfhBZ/QaxTF1ZQ+ADSY/ddS7GmCrXVNNZaZqfklfQNdKV/PaK53epGLyn4r1k+3gv11fTuRsPJ0fP4HiMwBmiqFVQOQsfilfTOdOrSqqP7+193c0erzXgYwyuxzf4RWguRyvpnJHO2ylyt1IOEKWIgvJllrp0XpROnF/GNkLUdXaKAVXKMFHnKYg6SN4swdd1HP3ZYo4VM+JXZWytpnOyvtWiHHOS/f5Me906n0on31fBPj/ZbyxpG45Fqf3BWpy0AKuEntElba2o8wYR78oK9mLu8khJW0M6Z6ULHq9gLyaPxZ3HgeIt2YV7anXSAqwXOg9Nv1tV52jxLXCrqJ9lWSx03pp+N6zz5tRRD47K2CamDreLkvzBYs/fizvrcTIIOEnscrJ06CsALkttrayTyIMKeCLTfrl4nltxiAZ0lmbKHSIJvkwU+opfdU/G1encTjyHd8XnghVi5JajS+QLg41OMU1/im+xSSTHF4r8rUfsQNZobZ1E+WSZqFwvFTrGio1AQeyU58lB5zBxY5eLWkSv2DovwhXpnA4xsPaW8a9vROX/xHi8iC9EkbMXv4tcYIq+f39odZ1FRold8neiwLtJfB04J9n3FZ1t2rRp06ZNmzb95j9jyoZJadvJiAAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle 8 z^{3} - 3 z^{2} - 6 z$"
+      ],
+      "text/plain": [
+       "   3      2      \n",
+       "8⋅z  - 3⋅z  - 6⋅z"
+      ]
+     },
+     "execution_count": 12,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print('jawaban no.14')\n",
+    "c.doit()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 13,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "soal no.19\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAJ8AAAAhCAYAAADH23nlAAAABHNCSVQICAgIfAhkiAAABT9JREFUeJztmmuIlUUYx3+7iblpGJbdqAzc1opwNU3oYp420zDM6EJEgaf0Q5BJhFEa0dIXg5SywNIgTlHUxoqFRbGFCV0oMywWdj+UsQVptZFW1HbT04f/HPbs63uZ93KuzQ9ezjkzz8wz7//MO+/MPAMORwOxChisdSMcjU9rgjKdwOdZN6QJWQt8CvwKDAM7gAtq2qI6w3W+ypEDNgOXAF3Av8C7wJQatqmhmAHsBP4E+oF5wB/A4lo2qkGZBBwGlta6IY1AB/ALsAloB64BvgGKwCkx6nkB+BGYmHUDa8wcpMUKS/vTjP2lITbNqFVcnQB4B3jZk/YccCBGHXOBI8C9cRzXgBOBlcB24CtgBD14HyDRgqYn25Eekyx89AB7gWMC8htFK4AbgaeA99Gctgi8GGIfRyfONBVe5EnfCrwVo5F9wCGgLUaZWnAnut/9wEvAevSgHTLpvUCLT7l5Jn9dRP2PIfHbQ2waRSvQnL8I/IZ2PqI6n61OAFyLJsjjPemfoT/Ghg70JG+1tK8lXWgu5h3hTgW+RcLdEFB2EE1Hgka0jcAPwPkh/qutVR7dUy5h+SuAc9ADmSO684GPTkGvk6IxOrYsbQFwIfYr3TtM43oC8vuMn+s96S1AweQ9aukrLTvRVsgRT/r3wDPmey6g7CvAWcBCn7wngdvQnzUQ4j9Mq3rSqcR7wJfGty1hOo3hdLTC3QJMZ+xiY4alsz1o9AyaPHei1d8AY0eNjcZPvYyY96H2PB6Qv9Dkb/Ckb0bzoS40gpYuv3lPmFaV0ClPupGvnBx2I1+QTr7cil45B4FdwCPA79jtDU5EYvZH2BVMg/Lm9zrzu8fST6UZh+6hSPD20mSTv9uTXgy4uj12NloVyFanPNXvfEE6ZU6HcdQXYXcGWlkOobBdEXibo+eatWIDatObEXYj6BWdBButstYpT/U7H6TTyZqLGX0yo1jP6KjwIXCcpY8hgkcXv8tGnHJWm3KDREclvkOjVxJstaqWToU4jSde5xuj07iYjmwZMZ8TLGyHy76vQBEUG/aheakt+2PY3oU21weAK4GfI+zbGL3nuNhqlVSnJ4ATPGmzgGXA86hzllPJ0KmvTnGejKgLtGApok3aMG5BK8wDxv7pxLeVHfegtvQDJ1vYt6J72JfQn41WWeuUp/qv3bQ6WdOCwkTDITZLgL/RnzwVvd7+Ac6tdONCuB8JuRc4ybLMeabMtoQ+o7SqhE55qt/5EumU9Pxer3Hmt6t/GXptfI1inqCQTRF4LYGvLHjI+N9DvJMnt5tyq1L4DtKqUjrlqX7nO0onmzlf0iNU21BUYDGKl5bX9waKnV7FaKy4F/3xy4D5KG5YLZajraTDxu9qH5sh/Cfji0y511P499OqHnUqcZ25QHuXoIVTwXz/CVjjKZNIp93odRSX8WhZ/UlZWrtJOwjM9ClT2oj8OIG/NHQTPZfd5VNuMppApx2tvVpVWqc86Ua+bsK1GvLYW+kUdn7vJuAvYFqZ/SYUZpkaUN9a05jZNnfUgNyN7m9+BnU1s1aROkWd32tBw/2zxn4NCphPD3E6wdSxI13b65I2tH3Tm1F9zaqVlU425/cWoZXWAyhuOdfC+eXAwzTXAUnQ6q0bODvDOptRq0id4pzf+wjtUl+dWfMc/0tKQenZaCXyhSd/DmNXul1oFdaK9qYcjtQsRSPf8WVpC0zazeZ3JzppuxytWuKcaHY4Aok6vzcNBYUfNPYzUagki1WewxF4fm8KinBs8di/SnTs1uFwOBwOh8PhcDgcjurzH76X07aTP0NwAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle \\frac{d}{d x} \\left(x - 2\\right)^{2} \\left(x + 1\\right)$"
+      ],
+      "text/plain": [
+       "d ⎛       2        ⎞\n",
+       "──⎝(x - 2) ⋅(x + 1)⎠\n",
+       "dx                  "
+      ]
+     },
+     "execution_count": 13,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print ('soal no.19')\n",
+    "d=Derivative ((x+1)*(x-2)**2)\n",
+    "d"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 14,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "jawaban no.19\n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle \\left(x - 2\\right)^{2} + \\left(x + 1\\right) \\left(2 x - 4\\right)$"
+      ],
+      "text/plain": [
+       "       2                    \n",
+       "(x - 2)  + (x + 1)⋅(2⋅x - 4)"
+      ]
+     },
+     "execution_count": 14,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print('jawaban no.19')\n",
+    "d.doit()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

@@ -1,0 +1,354 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# LIMIT"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Bagian ini berfungsi untuk menjalankan sekumpulan notasi/simbol \n",
+    "untuk mengakses kode python dalam melakukan perintah perhitungan"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 12,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import sympy as sym\n",
+    "sym.init_printing()\n",
+    "x = sym.symbols('x')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Soal-soal yang dikerjakan dalam task 1 ini merupakan soal-soal limit, \n",
+    "sehingga kita menggunakan ' sym.Limit ' untuk mengakses simbol-simbol\n",
+    "pada bentuk soal limit."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Dalam tugas ini, kita menggunakan operator * untuk perkalian,  / untuk pembagian, + untuk penjumlahan, - untuk pengurangan, ** untuk perpangkatan"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "untuk keterangan 'x mendekati ...' dituliskan dalam bentuk 'x,...' pada akhir soal.\n",
+    "Dan untuk menjalankan perintah soal, digunakan '.doit()' agar perintah dapat dieksekusi dan memunculkan jawaban."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Soal No.1: \n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle \\lim_{x \\to 4^+}\\left(\\frac{2 x^{2} + x - 15}{x^{2} + 7 x + 12}\\right)$"
+      ],
+      "text/plain": [
+       "     ⎛   2         ⎞\n",
+       "     ⎜2⋅x  + x - 15⎟\n",
+       " lim ⎜─────────────⎟\n",
+       "x─→4⁺⎜ 2           ⎟\n",
+       "     ⎝x  + 7⋅x + 12⎠"
+      ]
+     },
+     "execution_count": 2,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"Soal No.1: \")\n",
+    "sym.Limit((2*x**2+x-15)/(x**2+7*x+12),x,4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Jawaban No.1: \n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAYAAAADU1RxAAAABHNCSVQICAgIfAhkiAAAAhBJREFUSInt1V1oT3EYB/BPW1grrbxNJHEllCjkZtmN0hA3LuTarSW55cbrBWVxIW25NU2klvcLqWUXXhJpWWlelqS8ZMzm7+L3rJ3OztlGLiTfOv06z8v3+Z7f7/k9h78QR3ETfRjAe9zHfswcJ68ewziZszfhGl4GXy/asW48EYPoQiuOoAXdqOAVFpTk7YqYxtwHVfAOZ4PvQtT4gZ1lImpK7AeD8HSJvzOKVcf7XGln+jEnF9sYXL1lIsqwIhKvF/jq8A1tGdvaiL9UwvcRn0ZeqiYpYnOsjwp8TZiKjoytR9r2NZiVi2/AdNyYqOheHMAJ3JG+6iFmF8S247OxR9ksnf1bnMFhnMdXqVnzxzQG/VF45OmUbkAeNdK2tpfwbJVuWJarBzsmEpBFPbbhGV5jVc6/JYiLSPdhCMexGLWRfzVyjv2KEFgoNd/jnL0t7HU5+/oo1GEsaqW5MRziJt2YL/AEy4w2WrXUsLfwIRe/KdbbBVxfcC9qr/wVETAv1uFYG6QperEgdlqsRY2ctQ/mHUukIZNHldFhdTdjbwlBRQ27PeL7MT/n2yjdmgEFv4JmfJf+HSNXqhXPg/ANlmbi+6TrW4QqabBVpMF0Thrjl0NABbuLEpfjFB5II3hIOutuaWbMyMSuDqI9JSJgSnxYVwgZkmbGFWwYJ2/SOBQiFv0Jst/FU2nH/uPfw09lT4jYLZ8EQgAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle \\frac{3}{8}$"
+      ],
+      "text/plain": [
+       "3/8"
+      ]
+     },
+     "execution_count": 3,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"Jawaban No.1: \")\n",
+    "sym.Limit((2*x**2+x-15)/(x**2+7*x+12),x,4).doit()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Soal No.2: \n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle \\lim_{x \\to 4^+}\\left(\\frac{3 x^{2} - 14 x + 8}{x^{2} - 3 x - 4}\\right)$"
+      ],
+      "text/plain": [
+       "     ⎛   2           ⎞\n",
+       "     ⎜3⋅x  - 14⋅x + 8⎟\n",
+       " lim ⎜───────────────⎟\n",
+       "x─→4⁺⎜   2           ⎟\n",
+       "     ⎝  x  - 3⋅x - 4 ⎠"
+      ]
+     },
+     "execution_count": 4,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"Soal No.2: \")\n",
+    "sym.Limit((3*x**2-14*x+8)/(x**2-3*x-4),x,4)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Jawaban No.2: \n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAAA0AAAASCAYAAACAa1QyAAAABHNCSVQICAgIfAhkiAAAAMJJREFUKJHF0j9LQlEYB+DH6BNYhJ/HxcmpD9CgQxCImxAIbi5u7eLSJji5NzQGDRItDtHQ3J0aSnS4LxJytBMN/eBw4XCe+77nD3/MCdqYYYkPFLhHC0cpdIk13nCLIcZ4j/kpKruojmbijzW8Bjz/TevXgW7s6zORz/h+5VY5xiIqNXLRKMA8F3QCPKOaA64CPClP8Md0AyxwlgN6AR5xmgP6AR4c2MP3Z3GBCVbKSywS619izTaDqHJo3OW0+8/ZALBUMPfsVQVVAAAAAElFTkSuQmCC\n",
+      "text/latex": [
+       "$\\displaystyle 2$"
+      ],
+      "text/plain": [
+       "2"
+      ]
+     },
+     "execution_count": 6,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"Jawaban No.2: \")\n",
+    "sym.Limit((3*x**2-14*x+8)/(x**2-3*x-4),x,4).doit()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 7,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Soal No.3: \n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle \\lim_{x \\to 2^+}\\left(\\frac{x^{2} - 5 x + 6}{x^{2} + 2 x - 8}\\right)$"
+      ],
+      "text/plain": [
+       "     ⎛ 2          ⎞\n",
+       "     ⎜x  - 5⋅x + 6⎟\n",
+       " lim ⎜────────────⎟\n",
+       "x─→2⁺⎜ 2          ⎟\n",
+       "     ⎝x  + 2⋅x - 8⎠"
+      ]
+     },
+     "execution_count": 7,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"Soal No.3: \")\n",
+    "sym.Limit((x**2-5*x+6)/(x**2+2*x-8),x,2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 8,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Jawaban No.3: \n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAADIAAAAUCAYAAADPym6aAAAABHNCSVQICAgIfAhkiAAAAfVJREFUSInt1btrVFEQBvCfiQa3EMVHYicBBYsVsYiokLCioig+AtrY2liLpYWgWFhYmD/AJp0vBB9owMIggRSilVgYFyKKGImKYhSjFucsXG/uzT5lLfLBZeCbx505Z2YOC8jEUQxhFJ/xG8M1+vZgFpczdP24jrf4HuUD7K8YLG445WycwWZ8wWtsrMP3MDpwMyPmOUzhtlDEamxBCXebyjgHO7EBi+JP6rmRe0KynQnuWIwxgmUZPksaTbQelNReyHKhZa4kuA5M4CvWVAvQ6tZqFAfQhRsJbgd6cQ3T0aaIGYxjLBngfylkUDj5kQTXF+U7PMGmlM8jYbm8J1xfu7EU+4QZmUnw3VGeRAG7hTkp4j4GcDUvaFno61q/+fq/VIMNHIp2x1P8xcjPCpswiQImo347c1vrpb9PpRre1GGbh0H8wJ0UPx3lBJ6ldN+EWzmBrRhLF7KrBYnVg04cxEN8SuleRPkxx7dSaIH2z8gAVpn7CBKG+afwLnVl6ItRlv9JZgmUVJ+RIWEGenL0wzHG+RS/B7+E21pBeIFbiSPxg7XYK/T4aOSmcDphPymcaH9OvG48xvoYYxzrhLmqLIjczdUMzpp/y5UTtn2RO1Ul5kpcwithKXzALWxrXdrN4YJQSG+7E2kWz/G03UksYAFV8AeC/XwmBzbpnAAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle - \\frac{1}{6}$"
+      ],
+      "text/plain": [
+       "-1/6"
+      ]
+     },
+     "execution_count": 8,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"Jawaban No.3: \")\n",
+    "sym.Limit((x**2-5*x+6)/(x**2+2*x-8),x,2).doit()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 9,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Soal No.4: \n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "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\n",
+      "text/latex": [
+       "$\\displaystyle \\lim_{x \\to 3^+}\\left(\\frac{x^{2} - 9}{x^{2} - x - 6}\\right)$"
+      ],
+      "text/plain": [
+       "     ⎛   2      ⎞\n",
+       "     ⎜  x  - 9  ⎟\n",
+       " lim ⎜──────────⎟\n",
+       "x─→3⁺⎜ 2        ⎟\n",
+       "     ⎝x  - x - 6⎠"
+      ]
+     },
+     "execution_count": 9,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"Soal No.4: \")\n",
+    "sym.Limit((x**2-9)/(x**2-x-6),x,3)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 10,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Jawaban No.4: \n"
+     ]
+    },
+    {
+     "data": {
+      "image/png": "iVBORw0KGgoAAAANSUhEUgAAACEAAAAUCAYAAAADU1RxAAAABHNCSVQICAgIfAhkiAAAAf5JREFUSInt1cuLT2EYB/CPGZcZl0bjMjuaYjVTslAoRmRjwspG8i+IHSmKaCQJyULNRlmMSwojSvwslJVs0NT41SzIpRm5G2Ms3nd0Or3vND8RC986PfV9Luf7Ps9z3sM/jFW4iOf4Eu1NbMjEt2AEJwpcFaOZ50UxeXKi4F4cwGtcjQLmYinW4HoiZzPqcLnEv8XxRPz7zGHAlqj0FmYl/FMyeb1RdH2Bq8anJtShHx8wr4a8JmFk3SV+wiKK41iJVlzAIDrRjs94gPuZGp2YiksJ3zRswwLhcI9QEfYniZ3CKE7F4PIy3ZXuUI8w44YSX03UGBW63ZETcTgGfUMf1mEm2nAj+u6UchrwLgopYx/WCl/OdKGrZ/AdH7EkJeJIfNFIIqARA9G/osBvitzW3MkSOBpzyl8S2B2dfZnks9G/o8B1C0vZVIOIRbHOmzGiruB8Gu1QJnkw2sZo67ERt4X7YKJ4Ge2MlIiKsA+LhW0voz3aarSrMUemreNgbJz9uYBzQqsOlvj1wkINYXbkTgr705Ko04bmBL9QGPco9uREzC8EVYQl6hE6NCzcqGMYwL1Mnf3C/dKL0+gS7p9PsfY16W7/RDOO4Rm+Cgt0BcsLMctisV2ZGh04jydC94bxSvgdbMek8QRMFIeiiNbfUexX8RgP/6aA//hj+AEvqoj+DoyhAQAAAABJRU5ErkJggg==\n",
+      "text/latex": [
+       "$\\displaystyle \\frac{6}{5}$"
+      ],
+      "text/plain": [
+       "6/5"
+      ]
+     },
+     "execution_count": 10,
+     "metadata": {},
+     "output_type": "execute_result"
+    }
+   ],
+   "source": [
+    "print(\"Jawaban No.4: \")\n",
+    "sym.Limit((x**2-9)/(x**2-x-6),x,3).doit()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.7.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}
